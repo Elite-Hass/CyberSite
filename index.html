@@ -1,1 +1,850 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hussein Ahmad // Cyberpunk Portfolio</title>
+    
+    <style>
+        /* Import a cyberpunk font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        
+        /* CSS Variables - Easy to change colors throughout the site */
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff00ff;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a0a;
+            --dark-purple: #1a0033;
+            --neon-green: #00ff00;
+            --neon-orange: #ff6600;
+        }
+        
+        /* Reset default styles and set base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: linear-gradient(to bottom, #0a0a0a, #1a0033);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated background grid effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 10s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Navigation Bar */
+        nav {
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid var(--neon-cyan);
+            position: relative;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 10px;
+        }
+        
+        /* Glowing hover effect for nav links */
+        nav a:hover {
+            text-shadow: 
+                0 0 10px var(--neon-cyan),
+                0 0 20px var(--neon-cyan),
+                0 0 30px var(--neon-cyan);
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+        
+        /* 3D Text Effect Class */
+        .text-3d {
+            text-shadow: 
+                1px 1px 0 #000,
+                2px 2px 0 #111,
+                3px 3px 0 #222,
+                4px 4px 0 #333,
+                5px 5px 0 #444,
+                6px 6px 10px rgba(0, 255, 255, 0.8),
+                6px 6px 20px rgba(0, 255, 255, 0.6),
+                6px 6px 30px rgba(0, 255, 255, 0.4);
+            transform: perspective(500px) rotateY(-5deg);
+            transition: all 0.3s;
+        }
+        
+        .text-3d:hover {
+            transform: perspective(500px) rotateY(5deg) scale(1.05);
+            text-shadow: 
+                1px 1px 0 #000,
+                2px 2px 0 #111,
+                3px 3px 0 #222,
+                4px 4px 0 #333,
+                5px 5px 0 #444,
+                6px 6px 0 #555,
+                7px 7px 15px rgba(255, 0, 255, 0.8),
+                7px 7px 25px rgba(255, 0, 255, 0.6),
+                7px 7px 35px rgba(255, 0, 255, 0.4);
+        }
+        
+        /* Main title with glitch effect */
+        .glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--neon-cyan);
+            letter-spacing: 5px;
+            animation: flicker 2s infinite;
+        }
+        
+        /* Glitch effect layers */
+        .glitch::before,
+        .glitch::after {
+            content: 'HUSSEIN AHMAD';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--neon-pink);
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--neon-green);
+            z-index: -2;
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
+            40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
+            60% { clip-path: inset(10% 0 60% 0); transform: translate(0px, 2px); }
+            80% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 0); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+            40% { clip-path: inset(20% 0 40% 0); transform: translate(-2px, 2px); }
+            60% { clip-path: inset(40% 0 30% 0); transform: translate(2px, 2px); }
+            80% { clip-path: inset(10% 0 70% 0); transform: translate(0, -2px); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 0.8; }
+            93% { opacity: 1; }
+            94% { opacity: 0.8; }
+            95% { opacity: 1; }
+        }
+        
+        /* Subtitle with typing effect */
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--neon-pink);
+            margin-top: 20px;
+            overflow: hidden;
+            border-right: 3px solid var(--neon-pink);
+            white-space: nowrap;
+            animation: typing 3s steps(30) infinite, blink-cursor 0.75s step-end infinite;
+            max-width: fit-content;
+        }
+        
+        .hero-role {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-top: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
+        }
+        
+        @keyframes typing {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes blink-cursor {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--neon-pink); }
+        }
+        
+        /* Terminal Section */
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--neon-green);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 800px;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 0, 0.5),
+                inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        
+        .terminal-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--neon-green);
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-button.red { background: #ff5f56; }
+        .terminal-button.yellow { background: #ffbd2e; }
+        .terminal-button.green { background: #27c93f; }
+        
+        .terminal-content {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--neon-green);
+            line-height: 1.6;
+        }
+        
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .prompt {
+            color: var(--neon-cyan);
+            margin-right: 10px;
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 10px var(--neon-pink),
+                0 0 20px var(--neon-pink);
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--neon-purple);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+            filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 10px 40px rgba(157, 0, 255, 0.4),
+                0 0 20px rgba(157, 0, 255, 0.6);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+        
+        /* Neon Button */
+        .neon-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px 10px;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-cyan);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        
+        .neon-button:hover {
+            color: var(--dark-bg);
+            box-shadow: 
+                0 0 10px var(--neon-cyan),
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-cyan),
+                inset 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .neon-button:hover::before {
+            left: 0;
+        }
+        
+        /* Scanlines effect */
+        .scanlines::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 255, 0.03) 2px,
+                    rgba(0, 255, 255, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 2px solid var(--neon-purple);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: var(--neon-purple);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+            text-shadow: 
+                0 0 10px var(--neon-purple),
+                0 0 20px var(--neon-purple);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .glitch {
+                font-size: 3rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top-color: var(--neon-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="scanlines">
+    
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1 class="glitch text-3d" data-text="HUSSEIN AHMAD">HUSSEIN AHMAD</h1>
+        <p class="hero-role">Computer Science Major @ MSU</p>
+        <p class="subtitle">Coding the future, one line at a time...</p>
+        
+        <div style="margin-top: 50px;">
+            <a href="#about" class="neon-button">ENTER SYSTEM</a>
+            <a href="#experience" class="neon-button">VIEW EXPERIENCE</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="text-3d">System Profile</h2>
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-button red"></div>
+                <div class="terminal-button yellow"></div>
+                <div class="terminal-button green"></div>
+            </div>
+            <div class="terminal-content">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <span>cat profile.txt</span>
+                </div>
+                <p>> <span style="color: var(--neon-cyan);">NAME:</span> Hussein Ahmad</p>
+                <p>> <span style="color: var(--neon-cyan);">LOCATION:</span> East Lansing, MI</p>
+                <p>> <span style="color: var(--neon-cyan);">UNIVERSITY:</span> Michigan State University</p>
+                <p>> <span style="color: var(--neon-cyan);">MAJOR:</span> Computer Science (B.S.)</p>
+                <p>> <span style="color: var(--neon-cyan);">GPA:</span> <span style="color: #00ff00;">3.77/4.0 [DEAN'S LIST]</span></p>
+                <p>> <span style="color: var(--neon-cyan);">GRADUATION:</span> May 2026</p>
+                <p>> <span style="color: var(--neon-cyan);">MINOR:</span> Entrepreneurship & Innovation</p>
+                <br>
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <span>whoami</span>
+                </div>
+                <p>> A passionate CS student with a cyberpunk soul, seeking opportunities in software development and cybersecurity.</p>
+                <p>> Currently working as DSS Tech Team Member at MSU IT Services, solving tech challenges daily.</p>
+                <p>> Mentoring the next generation of coders as a CS Outreach Mentor.</p>
+                <p>> Fluent in multiple programming languages and human languages (Arabic, French, English).</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="text-3d">Technical Arsenal</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3 style="color: var(--neon-orange);">Programming Languages</h3>
+                <div style="margin-top: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: var(--neon-cyan); margin-bottom: 5px;">C++ [PROFICIENT]</p>
+                        <div style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green)); width: 90%; height: 100%; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: var(--neon-cyan); margin-bottom: 5px;">Python [PROFICIENT]</p>
+                        <div style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green)); width: 90%; height: 100%; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: var(--neon-cyan); margin-bottom: 5px;">JavaScript [FAMILIAR]</p>
+                        <div style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)); width: 70%; height: 100%; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: var(--neon-cyan); margin-bottom: 5px;">HTML [FAMILIAR]</p>
+                        <div style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)); width: 70%; height: 100%; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="color: var(--neon-cyan); margin-bottom: 5px;">SQL [FAMILIAR]</p>
+                        <div style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)); width: 60%; height: 100%; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--neon-green);">Relevant Coursework</h3>
+                <ul style="list-style: none; line-height: 2;">
+                    <li><span style="color: var(--neon-cyan);">></span> Biometrics & Pattern Recognition</li>
+                    <li><span style="color: var(--neon-cyan);">></span> Mobile App Development</li>
+                    <li><span style="color: var(--neon-cyan);">></span> Object-Oriented Software Design</li>
+                    <li><span style="color: var(--neon-cyan);">></span> Design & Theory of Algorithms</li>
+                    <li><span style="color: var(--neon-cyan);">></span> Database Systems</li>
+                    <li><span style="color: var(--neon-cyan);">></span> Calculus 1, 2, 3</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--neon-purple);">Human Languages</h3>
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="color: var(--neon-cyan);">🌍</span> English [NATIVE]</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;"><span style="color: var(--neon-green);">🌍</span> Arabic [PROFICIENT]</p>
+                    <p style="font-size: 1.2rem;"><span style="color: var(--neon-pink);">🌍</span> French [LIMITED]</p>
+                </div>
+                <div class="loader" style="margin-top: 30px;"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="text-3d">Digital Constructs</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Binary Search Tree Project</h3>
+                <p style="color: var(--neon-green); margin-bottom: 10px;">[Algorithms & Data Structures - CSE 331]</p>
+                <p>Engineered a sophisticated solution for managing hierarchical data structures, focusing on node connections and network complexities. Applied calculus-based optimization techniques with Python to enhance database indexing and memory management.</p>
+                <div style="margin-top: 20px;">
+                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#Python #DataStructures #Algorithms</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Cyberpunk Portfolio</h3>
+                <p style="color: var(--neon-pink); margin-bottom: 10px;">[Personal Project]</p>
+                <p>This very website you're viewing! Built with HTML, CSS, and JavaScript, featuring glitch effects, 3D text, neon aesthetics, and an interactive terminal. A testament to my passion for both coding and cyberpunk culture.</p>
+                <div style="margin-top: 20px;">
+                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#WebDev #JavaScript #CSS</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Future Projects Loading...</h3>
+                <p style="color: var(--neon-purple); margin-bottom: 10px;">[IN DEVELOPMENT]</p>
+                <p>Currently working on mobile apps, cybersecurity tools, and machine learning projects. The future is being coded...</p>
+                <div class="loader"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="text-3d">Experience Timeline</h2>
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-button red"></div>
+                <div class="terminal-button yellow"></div>
+                <div class="terminal-button green"></div>
+            </div>
+            <div class="terminal-content">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <span>ls -la /experience/</span>
+                </div>
+                <br>
+                <p style="color: var(--neon-green); font-size: 1.2rem;">// DSS TECH TEAM MEMBER</p>
+                <p style="color: var(--neon-cyan);">Michigan State University IT Services | May 2025 - Present</p>
+                <ul style="list-style: none; margin-left: 20px; margin-top: 10px;">
+                    <li>> Resolve support tickets for faculty/staff (hardware & software)</li>
+                    <li>> Install and configure: monitors, docking stations, Ethernet cables, webcams</li>
+                    <li>> Reimage and deploy computers with secure configurations</li>
+                    <li>> Maintain digital signage systems across campus</li>
+                </ul>
+                <br>
+                <p style="color: var(--neon-green); font-size: 1.2rem;">// CS OUTREACH MENTOR</p>
+                <p style="color: var(--neon-cyan);">Michigan State University | Jan 2024 - Present</p>
+                <ul style="list-style: none; margin-left: 20px; margin-top: 10px;">
+                    <li>> Teach HTML, JavaScript, and Python to students of all levels</li>
+                    <li>> Create collaborative learning environments focused on creative coding</li>
+                    <li>> Lead lectures on imaging and animation with code</li>
+                    <li>> Inspire the next generation of programmers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Terminal -->
+    <section id="terminal" class="section">
+        <h2 class="text-3d">System Terminal</h2>
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-button red"></div>
+                <div class="terminal-button yellow"></div>
+                <div class="terminal-button green"></div>
+            </div>
+            <div class="terminal-content">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <input type="text" id="terminal-input" style="background: none; border: none; color: var(--neon-green); outline: none; font-family: inherit; width: 80%;" placeholder="Type 'help' for commands...">
+                </div>
+                <div id="terminal-output"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="text-3d">Establish Connection</h2>
+        <div style="text-align: center;">
+            <p style="color: var(--neon-cyan); font-size: 1.2rem; margin-bottom: 30px;">
+                Ready to connect? Let's build the future together.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="mailto:ahmadhu3@msu.edu" class="neon-button">EMAIL ME</a>
+                <a href="tel:3132004826" class="neon-button">CALL: (313) 200-4826</a>
+            </div>
+            <p style="color: var(--neon-purple); margin-top: 30px; font-size: 1.1rem;">
+                📍 East Lansing, MI | 🎓 Michigan State University
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p style="color: var(--neon-purple);">© 2024 Hussein Ahmad | All systems operational</p>
+        <div class="social-links">
+            <a href="#">[GITHUB]</a>
+            <a href="#">[LINKEDIN]</a>
+            <a href="mailto:ahmadhu3@msu.edu">[EMAIL]</a>
+            <a href="#">[DISCORD]</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Terminal functionality
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalOutput = document.getElementById('terminal-output');
+        
+        // Terminal commands
+        const commands = {
+            'help': 'Available commands: help, clear, date, location, skills, education, gpa, languages, quote, matrix, about',
+            'clear': 'CLEAR',
+            'date': `Current date: ${new Date().toLocaleString()}`,
+            'location': 'Location: East Lansing, Michigan - Home of the Spartans',
+            'skills': 'Loading skills... [████████████] 100%\n> C++ (Proficient)\n> Python (Proficient)\n> JavaScript (Familiar)\n> HTML (Familiar)\n> SQL (Familiar)',
+            'education': 'Michigan State University\nB.S. Computer Science\nExpected: May 2026\nMinor: Entrepreneurship & Innovation',
+            'gpa': 'GPA: 3.77/4.0 [DEAN\'S LIST] - Excellence achieved ✓',
+            'languages': 'Human languages detected:\n> English [NATIVE]\n> Arabic [PROFICIENT]\n> French [LIMITED]',
+            'quote': '"The future is already here – it\'s just not evenly distributed." - William Gibson',
+            'matrix': 'Follow the white rabbit... 🐰\nRed pill or blue pill?',
+            'about': 'Hussein Ahmad - CS Major @ MSU\nDSS Tech Team Member | CS Outreach Mentor\nCoding the future, one line at a time.',
+            'contact': 'Email: ahmadhu3@msu.edu\nPhone: (313) 200-4826\nLocation: East Lansing, MI'
+        };
+        
+        // Handle terminal input
+        terminalInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const input = this.value.toLowerCase().trim();
+                
+                // Display the command
+                const commandDiv = document.createElement('div');
+                commandDiv.className = 'command-line';
+                commandDiv.innerHTML = `<span class="prompt">$</span><span>${input}</span>`;
+                terminalOutput.appendChild(commandDiv);
+                
+                // Process command
+                if (input in commands) {
+                    if (input === 'clear') {
+                        terminalOutput.innerHTML = '';
+                    } else {
+                        const output = document.createElement('p');
+                        output.textContent = '> ' + commands[input];
+                        output.style.color = '#00ff00';
+                        output.style.whiteSpace = 'pre-line';
+                        terminalOutput.appendChild(output);
+                    }
+                } else if (input === 'hack') {
+                    // Easter egg
+                    const output = document.createElement('p');
+                    output.textContent = '> ACCESS GRANTED... Welcome to the mainframe, Hussein.';
+                    output.style.color = '#ff00ff';
+                    terminalOutput.appendChild(output);
+                } else if (input) {
+                    const error = document.createElement('p');
+                    error.textContent = `> Command not found: ${input}`;
+                    error.style.color = '#ff5f56';
+                    terminalOutput.appendChild(error);
+                }
+                
+                // Clear input
+                this.value = '';
+                
+                // Scroll to bottom
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add random glitch effect to title
+        const glitchElement = document.querySelector('.glitch');
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                glitchElement.style.animation = 'none';
+                setTimeout(() => {
+                    glitchElement.style.animation = '';
+                }, 100);
+            }
+        }, 3000);
+        
+        // Typing effect for subtitle
+        const subtitles = [
+            "Coding the future, one line at a time...",
+            "MSU Computer Science Student...",
+            "Cybersecurity enthusiast...",
+            "Full-stack developer in training...",
+            "System.out.println('Hello World');",
+            "print('Python is awesome')",
+            "cout << 'C++ master' << endl;"
+        ];
+        
+        let subtitleIndex = 0;
+        const subtitleElement = document.querySelector('.subtitle');
+        
+        setInterval(() => {
+            subtitleIndex = (subtitleIndex + 1) % subtitles.length;
+            subtitleElement.textContent = subtitles[subtitleIndex];
+        }, 4000);
+        
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'pulse 2s infinite';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all skill bars
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Console Easter egg
+        console.log('%c HUSSEIN\'S DIGITAL FORTRESS ', 'background: #ff00ff; color: #000; font-size: 20px; font-weight: bold;');
+        console.log('%c Welcome to my portfolio, fellow developer! ', 'color: #00ffff; font-size: 14px;');
+        console.log('%c Try typing "hack" in the terminal for a surprise... ', 'color: #00ff00; font-size: 12px;');
+        console.log('%c Contact me at: ahmadhu3@msu.edu ', 'color: #ffbd2e; font-size: 12px;');
+    </script>
+    
+    <style>
+        /* Additional pulse animation for skill bars */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+    
+</body>
+</html>
