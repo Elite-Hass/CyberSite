@@ -337,7 +337,7 @@
         }
         
         .card {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(10, 10, 30, 0.8);
             border: 2px solid var(--neon-purple);
             border-radius: 10px;
             padding: 30px;
@@ -379,11 +379,11 @@
         }
         
         .card p {
-            color: #aaa;
+            color: #ccc;
             line-height: 1.6;
         }
         
-        /* Neon Button */
+        /* Neon Button - ACCESSIBILITY FIX */
         .neon-button {
             display: inline-block;
             padding: 15px 30px;
@@ -407,22 +407,53 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-yellow));
+            background: rgba(0, 255, 255, 0.2);
             transition: left 0.3s;
             z-index: -1;
         }
         
+        /* IMPROVED ACCESSIBILITY: Better color contrast on hover */
         .neon-button:hover {
-            color: var(--dark-bg);
+            color: #000;
+            background: var(--neon-cyan);
             box-shadow: 
-                0 0 10px var(--neon-yellow),
+                0 0 10px var(--neon-cyan),
                 0 0 20px var(--neon-cyan),
-                0 0 40px var(--neon-yellow),
-                inset 0 0 20px rgba(255, 255, 0, 0.2);
+                0 0 40px var(--neon-cyan);
+            border-color: var(--neon-cyan);
         }
         
         .neon-button:hover::before {
             left: 0;
+        }
+        
+        /* Different colored buttons with proper accessibility */
+        .neon-button.yellow {
+            border-color: #cccc00;
+            color: #cccc00;
+        }
+        
+        .neon-button.yellow:hover {
+            background: #cccc00;
+            border-color: #cccc00;
+            color: #000;
+            box-shadow: 
+                0 0 10px #cccc00,
+                0 0 20px #cccc00;
+        }
+        
+        .neon-button.pink {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+        }
+        
+        .neon-button.pink:hover {
+            background: var(--neon-pink);
+            border-color: var(--neon-pink);
+            color: #000;
+            box-shadow: 
+                0 0 10px var(--neon-pink),
+                0 0 20px var(--neon-pink);
         }
         
         /* Scanlines effect */
@@ -562,7 +593,7 @@
                 <p>> Computer Science student passionate about software development and cybersecurity</p>
                 <p>> DSS Tech Team Member at MSU IT Services - Keeping campus tech running smoothly</p>
                 <p>> CS Outreach Mentor - Teaching the next generation of programmers</p>
-                <p>> Languages: English, Arabic, French | Building bridges across cultures through code</p>
+                <p>> Languages: English, Arabic, French</p>
             </div>
         </div>
     </section>
@@ -609,25 +640,22 @@
             <div class="card">
                 <h3 style="color: var(--neon-green);">Relevant Coursework</h3>
                 <ul style="list-style: none; line-height: 2;">
-                    <li><span style="color: var(--neon-cyan);">></span> Biometrics & Pattern Recognition</li>
-                    <li><span style="color: var(--neon-cyan);">></span> Mobile App Development</li>
-                    <li><span style="color: var(--neon-cyan);">></span> Object-Oriented Software Design</li>
-                    <li><span style="color: var(--neon-cyan);">></span> Design & Theory of Algorithms</li>
-                    <li><span style="color: var(--neon-cyan);">></span> Database Systems</li>
-                    <li><span style="color: var(--neon-cyan);">></span> Calculus 1, 2, 3</li>
+                    <li><span style="color: var(--neon-cyan);">></span> CSE 482: Biometrics & Pattern Recognition</li>
+                    <li><span style="color: var(--neon-cyan);">></span> CSE 476: Mobile App Development</li>
+                    <li><span style="color: var(--neon-cyan);">></span> CSE 335: Object-Oriented Software Design</li>
+                    <li><span style="color: var(--neon-cyan);">></span> CSE 331: Design & Theory of Algorithms</li>
+                    <li><span style="color: var(--neon-cyan);">></span> CSE 480: Database Systems</li>
+                    <li><span style="color: var(--neon-cyan);">></span> MTH 132, 133, 234: Calculus 1, 2, 3</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 style="color: var(--neon-purple);">Languages & Tools</h3>
+                <h3 style="color: var(--neon-purple);">Languages</h3>
                 <div style="margin-top: 20px;">
                     <p style="font-size: 1.1rem; margin-bottom: 15px; color: var(--neon-yellow);">Human Languages:</p>
-                    <p style="margin-bottom: 10px;"><span style="color: var(--neon-cyan);">🌍</span> English [Native]</p>
-                    <p style="margin-bottom: 10px;"><span style="color: var(--neon-green);">🌍</span> Arabic [Native]</p>
+                    <p style="margin-bottom: 10px;"><span style="color: var(--neon-green);">🌍</span> English [Native]</p>
+                    <p style="margin-bottom: 10px;"><span style="color: var(--neon-cyan);">🌍</span> Arabic [Proficient]</p>
                     <p style="margin-bottom: 20px;"><span style="color: var(--neon-pink);">🌍</span> French [Limited]</p>
-                    
-                    <p style="font-size: 1.1rem; margin-bottom: 15px; color: var(--neon-yellow);">Tools:</p>
-                    <p style="margin-bottom: 10px;"><span style="color: var(--neon-cyan);">></span> MS Office Suite</p>
-                    <p><span style="color: var(--neon-cyan);">></span> Git (Learning)</p>
+
                 </div>
             </div>
         </div>
@@ -638,27 +666,29 @@
         <h2 class="text-3d">Projects</h2>
         <div class="card-grid">
             <div class="card">
-                <h3>Binary Search Tree Implementation</h3>
+                <h3>Binary Search Tree Project</h3>
                 <p style="color: var(--neon-green); margin-bottom: 10px;">[CSE 331 - Algorithms & Data Structures]</p>
-                <p>Developed an optimized BST data structure for managing hierarchical information. Implemented recursive algorithms for insertion, deletion, and traversal operations. Applied mathematical optimization techniques to improve search efficiency and minimize memory usage. Project emphasized understanding of tree rotations, balancing, and Big-O complexity analysis.</p>
+                <p>Implemented a Binary Search Tree in Python with insert, delete, search, and traversal functions as part of a semester-long algorithms course project. Used recursion to manage node operations and organize data efficiently. Tested edge cases to ensure predictable and correct BST behavior across various data inputs and tree configurations.</p>
                 <div style="margin-top: 20px;">
                     <span style="color: var(--neon-cyan); font-size: 0.9rem;">#Python #DataStructures #Algorithms</span>
                 </div>
             </div>
             <div class="card">
-                <h3>Cyberpunk Portfolio</h3>
+                <h3>Cyberpunk Web-Portfolio</h3>
                 <p style="color: var(--neon-pink); margin-bottom: 10px;">[Personal Project]</p>
-                <p>Responsive portfolio website inspired by cyberpunk aesthetics. Features include an interactive terminal with custom commands, CSS animations including glitch effects and 3D text, smooth scrolling navigation, and dynamic content updates using JavaScript DOM manipulation.</p>
+                <p>Fully developed website structure and implemented smooth navigation, custom animations, and interactive UI elements for a cyberpunk aesthetic. Used AI-assisted design tools to brainstorm layout ideas, color themes, and animation styles. The portfolio showcases my projects and professional experiences with a futuristic design featuring glitch effects, terminal interactions, and neon styling inspired by Cyberpunk 2077.</p>
                 <div style="margin-top: 20px;">
-                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#HTML #CSS #JavaScript</span>
+                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#HTML #CSS #JavaScript #Git #AI-Assisted</span>
                 </div>
             </div>
             <div class="card">
                 <h3>Fitness Plus Mobile App</h3>
-                <p style="color: var(--neon-purple); margin-bottom: 10px;">[Android Studio]</p>
-                <p>Developed a fitness tracking app in Android Studio with workout history and detail screens. Added navigation between pages, a zoom feature for images, and simple storage for workout information.</p>
+                <p style="color: var(--neon-purple); margin-bottom: 10px;">[Android Studio Project]</p>
+                <p>Mobile fitness app that allows users to track workouts, view detailed workout information, and find nearby gyms using device location. Added navigation between pages, a zoom feature for images, and simple storage for workout information. Designed clean layouts using XML and tested across different screen sizes including mobile and web. Improved usability by reducing the number of steps needed for users to review their workout progress.</p>
                 <div style="margin-top: 20px;">
-                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#AndroidStudio #MobileApp #Java</span>
+                    <span style="color: var(--neon-cyan); font-size: 0.9rem;">#AndroidStudio #Java #XML #MobileApp</span>
+                    <br><br>
+                    <a href="https://github.com/Elite-Hass/Fitness-Plus-App" target="_blank" class="neon-button" style="font-size: 0.9rem; padding: 10px 20px; margin: 5px;">GITHUB</a>
                 </div>
             </div>
 
@@ -685,22 +715,20 @@
                     <span>ls -la /experience/</span>
                 </div>
                 <br>
-                <p style="color: var(--neon-green); font-size: 1.2rem;">// DSS TECH TEAM MEMBER</p>
+                <p style="color: var(--neon-green); font-size: 1.2rem;">// DIGITAL STRATEGY & SERVICES TECH TEAM MEMBER</p>
                 <p style="color: var(--neon-cyan);">Michigan State University IT Services | May 2025 - Present</p>
                 <ul style="list-style: none; margin-left: 20px; margin-top: 10px;">
-                    <li>> Provide technical support for 200+ faculty and staff members across multiple departments</li>
-                    <li>> Configure and deploy enterprise-level hardware including workstations, networking equipment, and AV systems</li>
-                    <li>> Manage computer imaging and deployment ensuring secure configurations and compliance with university standards</li>
-                    <li>> Maintain critical digital signage infrastructure serving 50,000+ students daily</li>
+                    <li>> Resolved 10–20 weekly hardware and software support tickets for faculty and staff, installing and configuring devices (monitors, docking stations, Ethernet, webcams) to ensure reliable connectivity</li>
+                    <li>> Reimage and deploy new or replacement computers to ensure updated configurations, secure access, and smooth system performance</li>
+                    <li>> Maintain and troubleshoot campus-wide digital signage systems, ensuring accurate and reliable information displays across campus</li>
                 </ul>
                 <br>
-                <p style="color: var(--neon-green); font-size: 1.2rem;">// CS OUTREACH MENTOR</p>
+                <p style="color: var(--neon-green); font-size: 1.2rem;">// COMPUTER SCIENCE OUTREACH MENTOR</p>
                 <p style="color: var(--neon-cyan);">Michigan State University | Jan 2024 - Present</p>
                 <ul style="list-style: none; margin-left: 20px; margin-top: 10px;">
-                    <li>> Instruct 30+ students per semester in HTML, JavaScript, and Python programming fundamentals</li>
-                    <li>> Develop and deliver engaging curriculum focused on creative coding and practical applications</li>
-                    <li>> Lead workshop sessions on advanced topics including animation, image processing, and interactive web development</li>
-                    <li>> Mentor students from diverse backgrounds, adapting teaching methods to various skill levels</li>
+                    <li>> Teach middle school and high school students the fundamentals of HTML, JavaScript, and Python</li>
+                    <li>> Provide a collaborative learning environment by demonstrating creative coding techniques focused on imaging and animation</li>
+                    <li>> Led structured lessons and guided coding exercises that improved student proficiency and confidence in core programming skills</li>
                 </ul>
             </div>
         </div>
@@ -733,11 +761,11 @@
                 Let's connect and build something awesome
             </p>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-                <a href="mailto:ahmadhu3@msu.edu" class="neon-button" style="border-color: var(--neon-cyan);">MSU EMAIL</a>
-                <a href="mailto:husseinahmad2016rahaf@gmail.com" class="neon-button" style="border-color: var(--neon-yellow); color: var(--neon-yellow);">GMAIL</a>
-                <a href="tel:3132004826" class="neon-button" style="border-color: var(--neon-pink); color: var(--neon-pink);">(313) 200-4826</a>
+                <a href="mailto:ahmadhu3@msu.edu" class="neon-button">MSU EMAIL</a>
+                <a href="mailto:husseinahmad2016rahaf@gmail.com" class="neon-button yellow">GMAIL</a>
+                <a href="tel:3132004826" class="neon-button pink">(313) 200-4826</a>
             </div>
-            <div style="background: rgba(0,0,0,0.7); border: 2px solid var(--neon-yellow); border-radius: 10px; padding: 30px; max-width: 600px; margin: 0 auto;">
+            <div style="background: rgba(10, 10, 30, 0.8); border: 2px solid var(--neon-yellow); border-radius: 10px; padding: 30px; max-width: 600px; margin: 0 auto;">
                 <p style="color: var(--neon-cyan); font-size: 1.2rem; margin-bottom: 20px;">Contact Info:</p>
                 <p style="color: #fff; margin-bottom: 10px;">📧 School: ahmadhu3@msu.edu</p>
                 <p style="color: #fff; margin-bottom: 10px;">📧 Personal: husseinahmad2016rahaf@gmail.com</p>
@@ -754,6 +782,7 @@
         </p>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/hussein-ahmad2077" target="_blank" style="color: var(--neon-cyan);">LinkedIn</a>
+            <a href="https://github.com/Elite-Hass" target="_blank" style="color: var(--neon-purple);">GitHub</a>
             <a href="mailto:ahmadhu3@msu.edu" style="color: var(--neon-yellow);">MSU Email</a>
             <a href="mailto:husseinahmad2016rahaf@gmail.com" style="color: var(--neon-pink);">Gmail</a>
         </div>
@@ -773,11 +802,11 @@
             'skills': 'Programming Languages:\n> C++ (Proficient)\n> Python (Proficient)\n> JavaScript (Learning)\n> HTML/CSS (Learning)\n> SQL (Basic)\n\nTools:\n> MS Office Suite\n> Git (Learning)',
             'education': 'Michigan State University\nB.S. Computer Science\nExpected: May 2026\nMinor: Entrepreneurship & Innovation',
             'gpa': 'GPA: 3.77/4.0 - Dean\'s List',
-            'languages': 'Languages:\n> English (Native)\n> Arabic (Native)\n> French (Limited)',
+            'languages': 'Languages:\n> English (Native)\n> Arabic (Proficient)\n> French (Limited)',
             'about': 'Hussein Ahmad\nComputer Science @ MSU\nDSS Tech Team | CS Outreach Mentor\nFocused on software development and cybersecurity',
             'contact': 'Contact:\n> MSU: ahmadhu3@msu.edu\n> Personal: husseinahmad2016rahaf@gmail.com\n> Phone: (313) 200-4826',
             'linkedin': 'LinkedIn: www.linkedin.com/in/hussein-ahmad2077',
-            'projects': 'Current projects:\n> Binary Search Tree Implementation\n> Cyberpunk Portfolio Website\n> More in development...'
+            'projects': 'Current projects:\n> Binary Search Tree Implementation\n> Cyberpunk Portfolio Website\n> Fitness Plus Mobile App\n> More in development...'
         };
         
         // Handle terminal input
@@ -887,9 +916,6 @@
         console.log('%c Hussein Ahmad - Portfolio ', 'background: #ffff00; color: #000; font-size: 20px; font-weight: bold;');
         console.log('%c Computer Science @ MSU ', 'color: #00ffff; font-size: 14px;');
         console.log('%c Try typing "hack" in the terminal ;) ', 'color: #00ff00; font-size: 12px;');
-        console.log('%c MSU Email: ahmadhu3@msu.edu ', 'color: #ffff00; font-size: 12px;');
-        console.log('%c Personal: husseinahmad2016rahaf@gmail.com ', 'color: #ff00ff; font-size: 12px;');
-        console.log('%c LinkedIn: www.linkedin.com/in/hussein-ahmad2077 ', 'color: #00ffff; font-size: 12px;');
         console.log('%c MSU Email: ahmadhu3@msu.edu ', 'color: #ffff00; font-size: 12px;');
         console.log('%c Personal: husseinahmad2016rahaf@gmail.com ', 'color: #ff00ff; font-size: 12px;');
         console.log('%c LinkedIn: www.linkedin.com/in/hussein-ahmad2077 ', 'color: #00ffff; font-size: 12px;');
